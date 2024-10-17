@@ -1,7 +1,8 @@
 node_modules
-  yarn-error.log
-  .DS_Store
-  .vscode
-  /dist
-  /coverage
-  .env
+yarn-error.log
+pnpm-error.log
+.DS_Store
+/dist
+/coverage
+.env
+src/example-assets
