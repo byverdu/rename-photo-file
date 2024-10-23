@@ -1,10 +1,13 @@
-import { exifReader } from '@modules';
+import { exifReader, renameFile, sendEmail } from '@modules';
 
-const fileName = await exifReader(
-  'src/example-assets/sample.HEIC',
-  (filePath, msg) => {
-    console.log(filePath, msg);
-  },
-);
+const filePath = 'src/example-assets/.test_3.HEIC';
 
-console.log(fileName);
+try {
+  const fileName = await exifReader(filePath, sendEmail);
+  await renameFile(
+    { oldPath: filePath, newPath: `${fileName ?? ''}` },
+    sendEmail,
+  );
+} catch (error) {
+  console.error(error);
+}
