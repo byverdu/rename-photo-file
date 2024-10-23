@@ -5,6 +5,7 @@
   "tasks": {
     "dev": "deno run --allow-all --watch src/main.ts"
   },
+  "nodeModulesDir": "auto",
   "fmt": {
     "useTabs": true,
     "lineWidth": 80,
@@ -13,5 +14,14 @@
     "singleQuote": true,
     "proseWrap": "preserve",
     "include": ["src/"]
+  },
+  "imports": {
+    "@constants": "./src/constants.ts",
+    "@modules": "./src/modules/index.ts",
+    "@std/testing": "jsr:@std/testing@^1.0.3",
+    "@types/node": "npm:@types/node@^22.7.7",
+    "@utils": "./src/utils.ts",
+    "exiftool-vendored": "npm:exiftool-vendored@^28.7.0",
+    "watcher": "npm:watcher@^2.3.1"
   }
 }
