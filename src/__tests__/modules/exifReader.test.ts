@@ -7,14 +7,10 @@ import {
   spy,
   stub,
 } from 'jsr:@std/testing/mock';
-import { exifReader } from '@modules';
+import { exifReader, sendEmail } from '@modules';
 import { utils } from '@utils';
 import { ExifDateTime, exiftool, Tags } from 'exiftool-vendored';
 import type { ExifTag } from '../../types.ts';
-
-const emailModule = (filePath: string, msg: string) => {
-  console.log(`Email sent to ${filePath} with message: ${msg}`);
-};
 
 const validTags = {
   CreateDate: {
@@ -34,7 +30,7 @@ describe('exifReader', () => {
       'read',
       resolvesNext([{ date: 'today' } as Tags]),
     );
-    const spyMail = spy(emailModule);
+    const spyMail = spy(sendEmail);
 
     await exifReader('test.jpg', spyMail);
 
@@ -53,7 +49,7 @@ describe('exifReader', () => {
     );
     const spyUtils = spy(utils, 'areValidExifTags');
 
-    await exifReader('test.jpg', emailModule);
+    await exifReader('test.jpg', sendEmail);
 
     assertSpyCalls(result, 1);
     assertSpyCalls(spyUtils, 1);
@@ -69,7 +65,7 @@ describe('exifReader', () => {
       resolvesNext([validTags]),
     );
 
-    const formattedDate = await exifReader('test.jpg', emailModule);
+    const formattedDate = await exifReader('test.jpg', sendEmail);
 
     assertSpyCalls(result, 1);
     expect(formattedDate).toEqual('21-10-2024 23:20:34_test');
@@ -82,7 +78,7 @@ describe('exifReader', () => {
     );
     const spyUtils = spy(utils, 'formatExifDate');
 
-    await exifReader('test.jpg', emailModule);
+    await exifReader('test.jpg', sendEmail);
 
     assertSpyCalls(result, 1);
     assertSpyCalls(spyUtils, 1);

@@ -1,11 +1,11 @@
 import { ExifDateTime, exiftool } from 'exiftool-vendored';
 import path from 'node:path';
 import { utils } from '@utils';
-import type { ExifTag } from '../types.ts';
+import type { EmailModule, ExifTag } from '../types.ts';
 
 export const exifReader = async (
   filePath: string,
-  emailModule: (filePath: string, msg: string) => void,
+  emailModule: EmailModule,
 ) => {
   try {
     const tags = await exiftool.read('src/example-assets/sample.mov');
