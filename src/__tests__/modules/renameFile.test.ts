@@ -8,10 +8,11 @@ import {
 } from 'jsr:@std/testing/mock';
 import { renameFile, sendEmail } from '@modules';
 import { promises } from 'node:fs';
+
 const oldPath = 'src/example-assets/sample.mov';
 const newPath = '21-10-2024 23:20:34_sample';
 
-describe.only('renameFile', () => {
+describe('renameFile', () => {
   it('should only call sendEmail when there is an error renaming the file', async () => {
     using result = stub(
       promises,
