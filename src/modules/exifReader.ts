@@ -8,7 +8,7 @@ export const exifReader = async (
   emailModule: EmailModule,
 ) => {
   try {
-    const tags = await exiftool.read('src/example-assets/sample.mov');
+    const tags = await exiftool.read(filePath);
 
     if (!utils.areValidExifTags(tags, ['CreateDate'] as ExifTag[])) {
       emailModule(filePath, 'File has no exif data');
@@ -18,8 +18,6 @@ export const exifReader = async (
     const formattedExifDate = utils.formatExifDate(
       tags.CreateDate as ExifDateTime,
     );
-    console.log(`Processed file: ${path.basename(filePath)}`);
-    console.log(`New file name: ${formattedExifDate}`);
 
     return `${formattedExifDate}_${path.parse(filePath).name}`;
   } catch (error) {
