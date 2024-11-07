@@ -1,1 +1,6 @@
-export const VALID_IMAGE_EXTENSION = /^(?!\.).+\.heic|mov/i; // ^(?!\.).+ -> not starting with .
+export const VALID_IMAGE_EXTENSION = /heic|mov/i;
+export const ENVS = {
+  PRODUCTION: 'prod',
+  DEVELOPMENT: 'dev',
+};
+export const DEV_WATCHER_FOLDER = 'src/example-assets';

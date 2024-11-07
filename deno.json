@@ -3,7 +3,8 @@
     "include": ["src/"]
   },
   "tasks": {
-    "dev": "deno run --allow-all --watch src/main.ts"
+    "dev": "NODE_ENV=dev deno run --allow-all --watch src/main.ts",
+    "start": "NODE_ENV=prod deno run --allow-all src/main.ts"
   },
   "nodeModulesDir": "auto",
   "fmt": {
