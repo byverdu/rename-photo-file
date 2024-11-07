@@ -11,9 +11,7 @@ async function renameFile(
   try {
     const { dir, ext } = path.parse(oldPath);
 
-    console.log('oldPath', promises.rename);
-
-    await promises.rename(oldPath, `${dir}/${newPath}${ext}`);
+    await promises.rename(oldPath, `${dir}/processed/${newPath}${ext}`);
   } catch (e) {
     emailModule(newPath, `Error renaming file: ${e}`);
   }
