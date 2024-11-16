@@ -43,7 +43,7 @@ watcher.on('add', async (oldPath) => {
       processedFiles++;
 
       if (!hasErrored && processedFiles === totalFiles) {
-        const formattedDate = new Date().toLocaleDateString('en-US', {
+        const formattedDate = new Date().toLocaleDateString('en-GB', {
           day: '2-digit',
           month: 'short',
           year: 'numeric',
