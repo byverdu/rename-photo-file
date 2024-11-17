@@ -4,13 +4,17 @@ import { DEV_WATCHER_FOLDER, ENVS, VALID_IMAGE_EXTENSION } from '@constants';
 import path from 'node:path';
 import process from 'node:process';
 import 'jsr:@std/dotenv/load';
-import { writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 
 const NODE_ENV = process.env.NODE_ENV ?? ENVS.DEVELOPMENT;
 const WATCHER_FOLDER_PATH = Deno.env.get('WATCHER_FOLDER_PATH');
 const watchFolder = NODE_ENV === ENVS.PRODUCTION
   ? WATCHER_FOLDER_PATH
   : DEV_WATCHER_FOLDER;
+
+if (!existsSync(`${watchFolder}/processed`)) {
+  mkdirSync(`${watchFolder}/processed`);
+}
 
 const watcher = new Watcher(watchFolder, { persistent: true });
 
@@ -26,7 +30,6 @@ watcher.on('add', (oldPath) => {
 watcher.on('add', async (oldPath) => {
   if (VALID_IMAGE_EXTENSION.test(path.extname(oldPath))) {
     console.log(`New file to process: ${oldPath}`);
-    let hasErrored = false;
 
     try {
       const newPath = await exifReader(oldPath, sendEmail) ?? '';
@@ -37,21 +40,18 @@ watcher.on('add', async (oldPath) => {
       );
     } catch (error) {
       // TODO: Send email
-      hasErrored = true;
       console.error(error);
     } finally {
       processedFiles++;
 
-      if (!hasErrored && processedFiles === totalFiles) {
+      if (processedFiles === totalFiles) {
         const formattedDate = new Date().toLocaleDateString('en-GB', {
           day: '2-digit',
           month: 'short',
           year: 'numeric',
         });
-        console.log('formattedDate', formattedDate);
-        writeFileSync(`${watchFolder}/latest.txt`, new Date().toISOString(), {
-          encoding: 'utf-8',
-        });
+
+        writeFileSync(`${watchFolder}/latest.txt`, formattedDate);
         processedFiles = 0;
         totalFiles = 0;
       }
