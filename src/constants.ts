@@ -1,4 +1,4 @@
-export const VALID_IMAGE_EXTENSION = /heic|mov/i;
+export const VALID_IMAGE_EXTENSION = /heic|mov|jpg|jpeg/i;
 export const ENVS = {
   PRODUCTION: 'prod',
   DEVELOPMENT: 'dev',
