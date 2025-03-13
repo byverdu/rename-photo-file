@@ -9,7 +9,12 @@ async function renameFile(
   emailModule: EmailModule,
 ) {
   try {
-    const { dir, ext } = path.parse(oldPath);
+    const { dir, ext, name } = path.parse(oldPath);
+
+    if (name.startsWith('.')) {
+      emailModule(oldPath, 'renameFile: Files starting with dot');
+      return;
+    }
 
     await promises.rename(oldPath, `${dir}/processed/${newPath}${ext}`);
   } catch (e) {
