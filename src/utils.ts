@@ -3,7 +3,15 @@ import type { ExifTag } from './types.ts';
 
 function formatExifDate(exifDate: ExifDateTime) {
   const { year, month, day, hour, minute, second } = exifDate;
-  return `${day}-${month}-${year} ${hour}:${minute}:${second}`;
+  const readableDate = new Date(`${year} ${month} ${day}`).toLocaleDateString(
+    'en-GB',
+    {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    },
+  );
+  return `${readableDate} ${hour}-${minute}-${second}`;
 }
 
 function areValidExifTags(
