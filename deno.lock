@@ -3,6 +3,7 @@
   "specifiers": {
     "jsr:@std/assert@*": "1.0.6",
     "jsr:@std/assert@^1.0.6": "1.0.6",
+    "jsr:@std/async@^1.0.5": "1.0.12",
     "jsr:@std/data-structures@^1.0.4": "1.0.4",
     "jsr:@std/dotenv@*": "0.225.2",
     "jsr:@std/expect@*": "1.0.5",
@@ -14,6 +15,7 @@
     "npm:@types/node@*": "22.5.4",
     "npm:@types/node@^22.7.7": "22.7.7",
     "npm:exiftool-vendored@^28.7.0": "28.7.0",
+    "npm:prettier@^3.5.3": "3.5.3",
     "npm:watcher@^2.3.1": "2.3.1"
   },
   "jsr": {
@@ -22,6 +24,9 @@
       "dependencies": [
         "jsr:@std/internal"
       ]
+    },
+    "@std/async@1.0.12": {
+      "integrity": "d1bfcec459e8012846fe4e38dfc4241ab23240ecda3d8d6dfcf6d81a632e803d"
     },
     "@std/data-structures@1.0.4": {
       "integrity": "fa0e20c11eb9ba673417450915c750a0001405a784e2a4e0c3725031681684a0"
@@ -52,6 +57,7 @@
       "integrity": "f98c2bee53860a5916727d7e7d3abe920dd6f9edace022e2d059f00d05c2cf42",
       "dependencies": [
         "jsr:@std/assert@^1.0.6",
+        "jsr:@std/async",
         "jsr:@std/data-structures",
         "jsr:@std/fs",
         "jsr:@std/internal",
@@ -107,6 +113,9 @@
     },
     "luxon@3.5.0": {
       "integrity": "sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ=="
+    },
+    "prettier@3.5.3": {
+      "integrity": "sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw=="
     },
     "promise-make-counter@1.0.1": {
       "integrity": "sha512-R1JGFIgSJDpNV/JXxytAx6K79noEpcBiZXWDa3ic9WEMpBZbUdVVQjlA266SCicJ9CGqd70iGbbzbjRKbGU1Jg==",
@@ -179,6 +188,7 @@
       "jsr:@std/testing@^1.0.3",
       "npm:@types/node@^22.7.7",
       "npm:exiftool-vendored@^28.7.0",
+      "npm:prettier@^3.5.3",
       "npm:watcher@^2.3.1"
     ]
   }
