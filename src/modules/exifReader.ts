@@ -8,6 +8,14 @@ export const exifReader = async (
   emailModule: EmailModule,
 ) => {
   try {
+    const fileName = path.parse(filePath).name;
+
+    if (fileName.startsWith('.')) {
+      emailModule(filePath, 'exifReader: Files starting with dot');
+
+      return;
+    }
+
     const tags = await exiftool.read(filePath);
 
     if (!utils.areValidExifTags(tags, ['CreateDate'] as ExifTag[])) {
@@ -19,7 +27,7 @@ export const exifReader = async (
       tags.CreateDate as ExifDateTime,
     );
 
-    return `${formattedExifDate}_${path.parse(filePath).name}`;
+    return `${formattedExifDate}_${fileName}`;
   } catch (error) {
     console.error(`Error processing file ${filePath}:`, error);
     emailModule(filePath, 'Error processing file');
