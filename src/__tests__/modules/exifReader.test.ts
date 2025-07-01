@@ -68,7 +68,7 @@ describe('exifReader', () => {
 		const formattedDate = await exifReader('test.jpg', sendEmail);
 
 		assertSpyCalls(result, 1);
-		expect(formattedDate).toEqual('21-10-2024 23:20:34_test');
+		expect(formattedDate).toEqual('21 Oct 2024 23:20:34_test');
 	});
 	it('should call formatExifDate utils method', async () => {
 		using result = stub(
@@ -84,7 +84,7 @@ describe('exifReader', () => {
 		assertSpyCalls(spyUtils, 1);
 		assertSpyCall(spyUtils, 0, {
 			args: [validTags.CreateDate as ExifDateTime],
-			returned: '21-10-2024 23:20:34',
+			returned: '21 Oct 2024 23:20:34',
 		});
 	});
 });

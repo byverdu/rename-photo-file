@@ -20,10 +20,9 @@ describe('utils', () => {
 		});
 
 		it('should return true if DateTime description is provided', () => {
-			const result = utils.areValidExifTags(
-				{ CreateDate: {} } as Tags,
-				['CreateDate'],
-			);
+			const result = utils.areValidExifTags({ CreateDate: {} } as Tags, [
+				'CreateDate',
+			]);
 			expect(result).toEqual(true);
 		});
 	});
@@ -38,7 +37,7 @@ describe('utils', () => {
 				minute: 20,
 				second: 34,
 			} as ExifDateTime);
-			expect(result).toBe('21-10-2024 23:20:34');
+			expect(result).toBe('21 Oct 2024 23:20:34');
 		});
 	});
 });

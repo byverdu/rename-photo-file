@@ -11,13 +11,11 @@ function formatExifDate(exifDate: ExifDateTime) {
 			year: 'numeric',
 		},
 	);
-	return `${readableDate} ${hour}-${minute}-${second}`;
+
+	return `${readableDate} ${hour}:${minute}:${second}`;
 }
 
-function areValidExifTags(
-	exifData: Tags,
-	lookUpTags: ExifTag[],
-) {
+function areValidExifTags(exifData: Tags, lookUpTags: ExifTag[]) {
 	return lookUpTags.map((tag) => exifData[tag] !== undefined).every(Boolean);
 }
 

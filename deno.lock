@@ -1,5 +1,5 @@
 {
-  "version": "4",
+  "version": "5",
   "specifiers": {
     "jsr:@std/assert@*": "1.0.6",
     "jsr:@std/assert@^1.0.6": "1.0.6",
@@ -15,7 +15,6 @@
     "npm:@types/node@*": "22.5.4",
     "npm:@types/node@^22.7.7": "22.7.7",
     "npm:exiftool-vendored@^28.7.0": "28.7.0",
-    "npm:prettier@^3.5.3": "3.5.3",
     "npm:watcher@^2.3.1": "2.3.1"
   },
   "jsr": {
@@ -91,10 +90,12 @@
       "integrity": "sha512-ktaWiLYYc/ajSa819+HxwABpqtk3dGIAmo5CbHvT3B6XyQSM7VNGDvCPNu94Ptc+Ti4tjTvAKRUCXU/lrVG4WQ=="
     },
     "exiftool-vendored.exe@12.99.0": {
-      "integrity": "sha512-ffpJHCzC9OYJqw4JlPNtCwRy02jwhmnSJEF/QqEjpuIWDEnlRBQP/yWRh1Nw21K1R4FB4yG5PlCgEDu09VQz/w=="
+      "integrity": "sha512-ffpJHCzC9OYJqw4JlPNtCwRy02jwhmnSJEF/QqEjpuIWDEnlRBQP/yWRh1Nw21K1R4FB4yG5PlCgEDu09VQz/w==",
+      "os": ["win32"]
     },
     "exiftool-vendored.pl@12.99.0": {
-      "integrity": "sha512-qRVEPQxtoerXF+izJ0O7jGAr5o0Uyvnyu7ao5DTKzF+V7Fv3SurE0l43oCeZPFKo/Ld4V7vEylhFCm4IHVZKWA=="
+      "integrity": "sha512-qRVEPQxtoerXF+izJ0O7jGAr5o0Uyvnyu7ao5DTKzF+V7Fv3SurE0l43oCeZPFKo/Ld4V7vEylhFCm4IHVZKWA==",
+      "os": ["!win32"]
     },
     "exiftool-vendored@28.7.0": {
       "integrity": "sha512-0zoq6kBS1yPjzJs+p0qZDinWEA72PTKoRk5ETYKfmeRcZAkhv83Y3HCpbb/LdgJJywfm8BcIJGezrBHvL7dVnQ==",
@@ -102,20 +103,20 @@
         "@photostructure/tz-lookup",
         "@types/luxon",
         "batch-cluster",
-        "exiftool-vendored.exe",
-        "exiftool-vendored.pl",
         "he",
         "luxon"
+      ],
+      "optionalDependencies": [
+        "exiftool-vendored.exe",
+        "exiftool-vendored.pl"
       ]
     },
     "he@1.2.0": {
-      "integrity": "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw=="
+      "integrity": "sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==",
+      "bin": true
     },
     "luxon@3.5.0": {
       "integrity": "sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ=="
-    },
-    "prettier@3.5.3": {
-      "integrity": "sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw=="
     },
     "promise-make-counter@1.0.1": {
       "integrity": "sha512-R1JGFIgSJDpNV/JXxytAx6K79noEpcBiZXWDa3ic9WEMpBZbUdVVQjlA266SCicJ9CGqd70iGbbzbjRKbGU1Jg==",
@@ -185,10 +186,10 @@
   },
   "workspace": {
     "dependencies": [
+      "jsr:@std/dotenv@1",
       "jsr:@std/testing@^1.0.3",
       "npm:@types/node@^22.7.7",
       "npm:exiftool-vendored@^28.7.0",
-      "npm:prettier@^3.5.3",
       "npm:watcher@^2.3.1"
     ]
   }
