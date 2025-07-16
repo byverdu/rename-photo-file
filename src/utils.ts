@@ -12,7 +12,7 @@ function formatExifDate(exifDate: ExifDateTime) {
 		},
 	);
 
-	return `${readableDate} ${hour}:${minute}:${second}`;
+	return `${readableDate} ${hour}_${minute}_${second}`;
 }
 
 function areValidExifTags(exifData: Tags, lookUpTags: ExifTag[]) {
